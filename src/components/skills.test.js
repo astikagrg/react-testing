@@ -18,4 +18,10 @@ describe("skills component", () => {
     const listElem = screen.getByRole("list");
     expect(listElem).toBeInTheDocument();
   });
+  test("renders the list item correctly", () => {
+    render(<Skills skills={skills} />);
+    const itemElem = screen.getAllByRole("listitem");
+    expect(itemElem).toHaveLength(3);
+    expect(itemElem[0]).toHaveTextContent(/html/i);
+  });
 });
