@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import skills from "./skills";
+import { render, screen, logRoles } from "@testing-library/react";
+import Skills from "./skills";
 
 describe("skills component", () => {
   const skills = [
@@ -9,12 +9,13 @@ describe("skills component", () => {
   ];
 
   test("correctly renders skills", () => {
-    render(<skills skills={skills} />);
+    const view = render(<Skills skills={skills} />);
+    logRoles(view.container);
     const h2Element = screen.getByRole("heading", {
       level: 2,
     });
-    expect(h2Element).toBeInTheDocument()
-    const listElem=screen.getByRole('heading,{}')
-  })
-
+    expect(h2Element).toBeInTheDocument();
+    const listElem = screen.getByRole("list");
+    expect(listElem).toBeInTheDocument();
+  });
 });

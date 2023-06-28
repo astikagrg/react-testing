@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function skills(skills) {
+export default function Skills({ skills }) {
   return (
     <div>
       <h2>List of Skills</h2>
