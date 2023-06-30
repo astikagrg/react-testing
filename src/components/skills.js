@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Skills({ skills }) {
+  const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div>
       <h2>List of Skills</h2>
@@ -9,6 +10,8 @@ export default function Skills({ skills }) {
           <li key={skill.id}>{skill.name}</li>
         ))}
       </ul>
+
+      {loggedIn ? <button>start working</button> : <button>login</button>}
     </div>
   );
 }
