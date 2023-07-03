@@ -1,5 +1,6 @@
-import './App.css';
-import Counter from './components/counter';
+import "./App.css";
+import Counter from "./components/counter";
+import Users from "./components/users";
 
 function App() {
   const skills = [
@@ -10,7 +11,8 @@ function App() {
   return (
     <div className="App">
       {/* <Skills skills={skills}/> */}
-      <Counter/>
+      <Counter />
+      <Users />
     </div>
   );
 }
