@@ -1,4 +1,4 @@
-import { render, screen, logRoles } from "@testing-library/react";
+import { logRoles, render, screen } from "@testing-library/react";
 import Skills from "./skills";
 
 describe("skills component", () => {
@@ -24,4 +24,28 @@ describe("skills component", () => {
     expect(itemElem).toHaveLength(3);
     expect(itemElem[0]).toHaveTextContent(/html/i);
   });
+
+  test("should show login button",()=>{
+    render(<Skills skills={skills} />);
+    const loginBtn = screen.getByRole("button", {name: 'login'});
+    expect(loginBtn).toBeInTheDocument();
+  })
+  test("should not show start button",()=>{
+    render(<Skills skills={skills} />);
+    const startBtn = screen.queryByRole("button", {name: 'start'});
+    expect(startBtn).not.toBeInTheDocument();
+  })
+
+  // 1 aec ley vyauni type ko matra
+  test("should show start button after 0.5s", async()=>{
+    // jest.useFakeTimers();
+    render(<Skills skills={skills} />);
+    // const loginBtn = screen.getByRole("button", {name: 'login'});
+    // loginBtn.click();
+    // jest.advanceTimersByTime(500);
+
+    //finds item asynchronously
+    const startBtn = await screen.findByRole("button", {name: 'start'},{timeout:4500});
+    expect(startBtn).toBeInTheDocument();
+  })
 });

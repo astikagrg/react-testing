@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Skills({ skills }) {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [isLoggedin, setIsloggedIn] = useState(false);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setIsloggedIn(true);
+    },4000)
+  },[])
   return (
     <div>
       <h2>List of Skills</h2>
@@ -10,8 +16,7 @@ export default function Skills({ skills }) {
           <li key={skill.id}>{skill.name}</li>
         ))}
       </ul>
-
-      {loggedIn ? <button>start working</button> : <button>login</button>}
+      {isLoggedin?(<button>start</button>): (<button>login</button>)}
     </div>
   );
 }
